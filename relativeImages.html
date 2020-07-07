@@ -1,0 +1,7 @@
+<script>
+	imgs = document.querySelectorAll("img");
+	for (var img of imgs) {
+		imgsrc = img.getAttribute("src");
+		img.setAttribute("src","./Images/".concat(imgsrc));
+	}
+</script>
