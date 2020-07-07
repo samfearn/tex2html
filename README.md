@@ -1,7 +1,7 @@
 # tex2html
 This repository contains files to be used with pandoc for converting from tex to html.
 
-This is currently work in progress.
+This is currently work in progress and only really intended for private use.
 
 ## Usage
 
