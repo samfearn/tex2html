@@ -1,0 +1,25 @@
+from: latex+latex_macros
+
+to: html
+
+output-file: ./pandoc_converted.html
+
+standalone: true
+
+# note that structured variables may be specified:
+variables:
+  lang: en
+  
+html-math-method:
+  method: mathjax
+  url: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+  
+include-in-header: [./mathjax_config.html]
+include-after-body: [./numbering.html]
+resource-path: [".:./Images/"]
+  
+css:
+- latex.css
+
+filters:
+- ../divit.lua
