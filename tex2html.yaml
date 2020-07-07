@@ -14,12 +14,28 @@ html-math-method:
   method: mathjax
   url: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
   
-include-in-header: [./mathjax_config.html]
-include-after-body: [./numbering.html]
-resource-path: [".:./Images/"]
+include-in-header: [mathjax_config.html]
+include-after-body: [numbering.html,relativeImages.html]
+# resource-path: [".","./Images/"]
   
 css:
 - latex.css
 
 filters:
 - ../divit.lua
+
+# part, chapter, section, or default:
+top-level-division: default
+
+pdf-engine: pdflatex
+
+table-of-contents: true
+toc-depth: 2
+number-sections: true
+
+# a list of offsets at each heading level
+number-offset: [0,0,0,0,0,0]
+
+section-divs: true
+identifier-prefix: ""
+title-prefix: ""
