@@ -22,7 +22,7 @@ css:
 - latex.css
 
 filters:
-- ../divit.lua
+- divit.lua
 
 # part, chapter, section, or default:
 top-level-division: default
