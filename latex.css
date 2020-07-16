@@ -314,6 +314,16 @@ dl dd {
   font-style: normal;
 }
 
+/* Other environments to be added here */
+
+/* Framed */
+.framed {
+    display: block;
+    margin: 12px 0;
+    font-style: normal;
+	border: 1px solid black;
+}
+
 /* Center align author name, use small caps and add vertical spacing  */
 .author {
   margin: 0.85rem 0;
