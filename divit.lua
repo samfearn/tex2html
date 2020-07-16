@@ -5,6 +5,7 @@ classNames['Theorem:'] = 'theorem'
 classNames['Definition:'] = 'definition'
 classNames['Proof:'] = 'proof'
 classNames['Example:'] = 'example'
+classNames['Framed:'] = 'framed'
 
 -- This function is a helper function for letting me inspect the AST
 function tableRep(table,depth)
