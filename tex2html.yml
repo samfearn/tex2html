@@ -10,7 +10,8 @@ standalone: true
 # note that structured variables may be specified:
 variables:
   lang: en
-  imageDir: ./Images/
+  # If you'd like to store your images in a subfolder compared to your source tex, use the following option
+  # imageDir: ./Images/
   
 html-math-method:
   method: mathjax
