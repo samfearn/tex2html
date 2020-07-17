@@ -87,6 +87,7 @@ body {
 
   counter-reset: theorem;
   counter-reset: definition;
+  counter-reset: example;
 
   color: hsl(0, 5%, 10%);
   background-color: hsl(210, 20%, 98%);
@@ -323,6 +324,19 @@ dl dd {
     font-style: normal;
 	border: 1px solid black;
 	padding: 0px 10px 10px 10px;
+}
+
+/* Example */
+.example {
+  counter-increment: example;
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.example::before {
+  content: 'Example ' counter(example) '. ';
+  font-weight: bold;
+  font-style: normal;
 }
 
 /* Center align author name, use small caps and add vertical spacing  */
