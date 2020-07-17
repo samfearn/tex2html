@@ -1,0 +1,8 @@
+<script>
+	var imageDir = '$imageDir$'
+	imgs = document.querySelectorAll("img");
+	for (var img of imgs) {
+		imgsrc = img.getAttribute("src");
+		img.setAttribute("src",imageDir.concat(imgsrc));
+	}
+</script>

@@ -1,0 +1,11 @@
+<script>
+	var envs = document.querySelectorAll("div.definition");
+	var refs = document.querySelectorAll("a[data-reference-type=ref]")
+	for (ref of refs) {
+		ref_label = ref.getAttribute("data-reference");
+		// console.log(document.querySelector("div.definitionref_label]"));
+		// Do some magic to get the correct label
+		ref.innerHTML = "1";
+	}
+	console.log(envs);
+</script>
