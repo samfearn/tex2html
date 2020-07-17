@@ -15,7 +15,7 @@ pandoc source.tex -d tex2html
 
 ## Configuration ##
 
-I like to use `\graphicspath{{./Images/}}` in latex, to load images from a subfolder called `Images` relative to the source `.tex` file. In order to replicate this with Pandoc, the html template loads a script which relabels the urls. This is controlled by a variable in `tex2html.yml` called `imageDir`; rename this if you would like to store your images in a different directory, or set it to be the empty string if you'd prefer your images to be in the same folder as your source `.tex` file.
+I like to use `\graphicspath{{./Images/}}` in latex, to load images from a subfolder called `Images` relative to the source `.tex` file. In order to replicate this with Pandoc, the html template loads a script which relabels the urls. This is controlled by a variable in `tex2html.yml` called `imageDir`; rename this if you would like to store your images in a different directory, or leave this line of the configuration file commented out if you'd prefer your images to be in the same folder as your source `.tex` file.
 
 [latex-css]:https://latex.now.sh
 [Pandoc]:https://pandoc.org/MANUAL.html
