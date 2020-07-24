@@ -1,11 +1,43 @@
 <script>
-	var envs = document.querySelectorAll("div.definition");
-	var refs = document.querySelectorAll("a[data-reference-type=ref]")
-	for (ref of refs) {
-		ref_label = ref.getAttribute("data-reference");
-		// console.log(document.querySelector("div.definitionref_label]"));
-		// Do some magic to get the correct label
-		ref.innerHTML = "1";
+	// The syntax to read the structured data from the yaml is horrible, template literals fix the problem but probably aren't widely supported enough. Escaping line breaks is browser dependant. I don't know if there's a better way?
+	// Note that the data from the yaml file is manipulated into an array, and then parsed back into strings later, but I didn't want to deal with the pandoc templating syntax longer than necessary.
+	var supportedEnvsArrayString = ' .${ for(environmentCounters/pairs) }${ it.value[;;; .] }${sep}||| .${endfor}';
+	var supportedEnvsArray = supportedEnvsArrayString.split("|||");
+	supportedEnvsArray = supportedEnvsArray.map(inner => inner.split(";;;"));
+	var numberWithin = '${numberWithinLevel}';
+	
+	function sanitiseSelector(selector) {
+		return selector.replace("\:","\\\:");
 	}
-	console.log(envs);
+	
+	function labelLinks() {
+		var refs = document.querySelectorAll("a[data-reference-type=ref]")
+		for (ref of refs) {
+			var ref_label = sanitiseSelector(ref.getAttribute("data-reference"));
+			var ref_to = document.querySelector("#"+ref_label);
+			var ref_number = ref_to.getAttribute("data-number");
+			ref.innerHTML = ref_number;
+		};
+	}
+	
+	function numberEnvs() {
+		for (var levelSpec = 0; levelSpec <= numberWithin; levelSpec++) {
+			var reqLevels = document.querySelectorAll(".level"+levelSpec);
+			for (var level of reqLevels) {
+				levelCount = level.getAttribute("data-number");
+				levelCount = levelCount+(".0".repeat(numberWithin-levelSpec));
+				for (var counter of supportedEnvsArray) {
+					var envCount = 1;
+					var envs = level.querySelectorAll(counter.join(", "));
+					for (var env of envs) {
+						env.setAttribute("data-number",levelCount+"."+envCount);
+						envCount += 1;
+					}
+				}
+			}
+		}
+	}
+	
+	numberEnvs();
+	labelLinks();
 </script>

@@ -85,9 +85,9 @@ body {
   margin: 0 auto;
   padding: 2rem 1.25rem;
 
-  counter-reset: theorem;
+  /*counter-reset: theorem;
   counter-reset: definition;
-  counter-reset: example;
+  counter-reset: example;*/
 
   color: hsl(0, 5%, 10%);
   background-color: hsl(210, 20%, 98%);
@@ -260,26 +260,28 @@ dl dd {
 
 /* Theorem */
 .theorem {
-  counter-increment: theorem;
+/*  counter-increment: theorem;*/
   display: block;
   margin: 12px 0;
   font-style: italic;
 }
 .theorem::before {
-  content: 'Theorem ' counter(theorem) '. ';
+/*  content: 'Theorem ' counter(theorem) '. ';*/
+  content: 'Theorem ' attr(data-number) '. ' ;
   font-weight: bold;
   font-style: normal;
 }
 
 /* Lemma */
 .lemma {
-  counter-increment: theorem;
+/*  counter-increment: theorem;*/
   display: block;
   margin: 12px 0;
   font-style: italic;
 }
 .lemma::before {
-  content: 'Lemma ' counter(theorem) '. ';
+/*  content: 'Lemma ' counter(theorem) '. ';*/
+  content: 'Lemma ' attr(data-number) '. ' ;
   font-weight: bold;
   font-style: normal;
 }
@@ -304,13 +306,14 @@ dl dd {
 
 /* Definition */
 .definition {
-  counter-increment: definition;
+/*  counter-increment: definition;*/
   display: block;
   margin: 12px 0;
   font-style: normal;
 }
 .definition::before {
-  content: 'Definition ' counter(definition) '. ';
+/*  content: 'Definition ' counter(definition) '. ';*/
+  content: 'Definition ' attr(data-number) '. ' ;
   font-weight: bold;
   font-style: normal;
 }
@@ -328,13 +331,14 @@ dl dd {
 
 /* Example */
 .example {
-  counter-increment: example;
+/*  counter-increment: example;*/
   display: block;
   margin: 12px 0;
   font-style: normal;
 }
 .example::before {
-  content: 'Example ' counter(example) '. ';
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Example ' attr(data-number) '. ' ;
   font-weight: bold;
   font-style: normal;
 }
