@@ -36,8 +36,8 @@ css:
 - template/style/latex.css
 
 filters:
-- divit.lua
-- eqref.lua
+- filters/divit.lua
+- filters/eqref.lua
 
 # part, chapter, section, or default:
 top-level-division: default
