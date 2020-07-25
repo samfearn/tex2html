@@ -1,5 +1,6 @@
 -- Load my stringRep module so it's available for inspecting the AST
-local sr = require "stringRep"
+-- These seem to need to be loaded relative to the working firectory pandoc is called from
+local sr = require "filters/stringRep"
 
 function Link (elem)
 	-- Use the following command to inspect the AST
