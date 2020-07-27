@@ -9,7 +9,9 @@ function doNumbering() {
 	
 	function sanitiseSelector(selector) {
 		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
-		return selector.replace("\:","\\\:");
+		var sanitised = selector.replace("\:","\\\:");
+		sanitised = sanitised.replace(/(^[\d])/,"\\3$$1 ");
+		return sanitised
 	}
 	
 	function labelLinks() {
