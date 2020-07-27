@@ -1,3 +1,5 @@
 <script type="text/x-mathjax-config">
 	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+	// I need to wait until MathJax has finished before running the numbering script
+	MathJax.Hub.Register.StartupHook("End",function(){doNumbering()});
 </script>

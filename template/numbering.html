@@ -1,4 +1,5 @@
 <script>
+function doNumbering() {
 	// The syntax to read the structured data from the yaml is horrible, template literals fix the problem but probably aren't widely supported enough. Escaping line breaks is browser dependant. I don't know if there's a better way?
 	// Note that the data from the yaml file is manipulated into an array, and then parsed back into strings later, but I didn't want to deal with the pandoc templating syntax longer than necessary.
 	var supportedEnvsArrayString = ' .${ for(environmentCounters/pairs) }${ it.value[;;; .] }${sep}||| .${endfor}';
@@ -15,7 +16,15 @@
 		for (ref of refs) {
 			var ref_label = sanitiseSelector(ref.getAttribute("data-reference"));
 			var ref_to = document.querySelector("#"+ref_label);
-			var ref_number = ref_to.getAttribute("data-number");
+			if (ref_to !== null) {
+				var ref_number = ref_to.getAttribute("data-number");
+			} else {
+				var mathjax_ref = "#mjx-eqn-"+ref_label;
+				ref_to = document.querySelector(mathjax_ref);
+				var ref_number = ref_to.querySelector(".mjx-char").innerHTML.replace(/[()]/g,"");
+				ref.setAttribute("href",mathjax_ref);
+			}
+			
 			ref.innerHTML = ref_number;
 		};
 	}
@@ -40,4 +49,5 @@
 	
 	numberEnvs();
 	labelLinks();
+}
 </script>
