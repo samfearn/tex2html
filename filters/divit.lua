@@ -10,6 +10,7 @@ classNames['Definition:'] = 'definition'
 classNames['Proof:'] = 'proof'
 classNames['Example:'] = 'example'
 classNames['Framed:'] = 'framed'
+classNames['Proposition:'] = 'proposition'
 
 function BlockQuote (elem)
 	local cont = elem.content
