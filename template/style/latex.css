@@ -248,9 +248,9 @@ nav li {
   display: block;
 }
 nav li:before {
-  content: counters(item, '.') ' ';
+  /*content: counters(item, '.') ' ';
   counter-increment: item;
-  padding-right: 0.85rem;
+  padding-right: 0.85rem;*/
 }
 
 /* Center definitions (most useful for display equations) */
@@ -354,6 +354,16 @@ dl dd {
   content: 'Proposition ' attr(data-number) '. ' ;
   font-weight: bold;
   font-style: normal;
+}
+
+/* Sideways scrolling for maths */
+.math.display > span {
+	overflow-x: scroll;
+}
+
+.math.inline > span {
+	overflow-x: scroll;
+	max-width: 100%;
 }
 
 /* Center align author name, use small caps and add vertical spacing  */
