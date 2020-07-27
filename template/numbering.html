@@ -8,23 +8,33 @@ function doNumbering() {
 	var numberWithin = '${numberWithinLevel}';
 	
 	function sanitiseSelector(selector) {
+		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
 		return selector.replace("\:","\\\:");
 	}
 	
 	function labelLinks() {
 		var refs = document.querySelectorAll("a[data-reference-type=ref]")
 		for (ref of refs) {
+			// Escape colons (or other) from the link title.
 			var ref_label = sanitiseSelector(ref.getAttribute("data-reference"));
+			// Hopefully ref is a reference to a div or a section, which should have the associated id. If so, we just need the data-number from the relevant DOM item.
 			var ref_to = document.querySelector("#"+ref_label);
 			if (ref_to !== null) {
 				var ref_number = ref_to.getAttribute("data-number");
 			} else {
-				var mathjax_ref = "#mjx-eqn-"+ref_label;
-				ref_to = document.querySelector(mathjax_ref);
-				var ref_number = ref_to.querySelector(".mjx-char").innerHTML.replace(/[()]/g,"");
-				ref.setAttribute("href",mathjax_ref);
+				// If ref is being used for an equation, then we need to try to parse the mathjax divs. This is fragile, but try to find the span which corresponds to the equation number we need.
+				try {
+					var mathjax_ref = "#mjx-eqn-"+ref_label;
+					ref_to = document.querySelector(mathjax_ref);
+					// Since this is a ref, we don't want the parens to be returned, so find the equation number and strip the parens.
+					var ref_number = ref_to.querySelector(".mjx-char").innerHTML.replace(/[()]/g,"");
+					ref.setAttribute("href",mathjax_ref);
+				}
+				// If we can't find a place to link to, just indicate a missing link.
+				catch (err){
+					var ref_number = "???"
+				}
 			}
-			
 			ref.innerHTML = ref_number;
 		};
 	}
