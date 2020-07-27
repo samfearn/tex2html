@@ -11,6 +11,7 @@ classNames['Proof:'] = 'proof'
 classNames['Example:'] = 'example'
 classNames['Framed:'] = 'framed'
 classNames['Proposition:'] = 'proposition'
+classNames['Center:'] = 'center'
 
 function BlockQuote (elem)
 	local cont = elem.content

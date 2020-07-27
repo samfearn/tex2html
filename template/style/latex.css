@@ -388,6 +388,14 @@ dl dd {
   margin-bottom: -0.2rem;
 }
 
+.center {
+	text-align: center;
+}
+
+.center img {
+	margin: auto;
+}
+
 /* Format the LaTeX symbol correctly (a higher up, e lower) */
 .latex span:nth-child(1) {
   text-transform: uppercase;
