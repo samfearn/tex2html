@@ -356,16 +356,6 @@ dl dd {
   font-style: normal;
 }
 
-/* Sideways scrolling for maths */
-.math.display > span {
-	overflow-x: scroll;
-}
-
-.math.inline > span {
-	overflow-x: scroll;
-	max-width: 100%;
-}
-
 /* Center align author name, use small caps and add vertical spacing  */
 .author {
   margin: 0.85rem 0;
@@ -478,4 +468,16 @@ h4,
 h5,
 h6 {
   margin-bottom: 0.8rem;
+}
+
+@media only screen and (max-width: 650px) {
+	/* Sideways scrolling for maths */
+	.math.display > span {
+		overflow-x: scroll;
+	}
+
+	.math.inline > span {
+		overflow-x: scroll;
+		max-width: 100%;
+	}
 }
