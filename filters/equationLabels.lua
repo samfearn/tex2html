@@ -9,8 +9,12 @@ function Math(elem)
 		local math = elem.text
 		-- If the aligned environment contains a label, then turn it into align rather than aligned, otherwise leave it as aligned.
 		if math:find("\\label{[%w%-%+_&:%^]+}") then
-			math = (math:gsub("\\begin{aligned}","\\begin{align}"))
-			math = (math:gsub("\\end{aligned}","\\end{align}"))
+			if math:find("\\begin{aligned}") then
+				math = (math:gsub("\\begin{aligned}","\\begin{align}"))
+				math = (math:gsub("\\end{aligned}","\\end{align}"))
+			else
+				math = "\\begin{equation} " .. math .. " \\end{equation}"
+			end
 		end
 		elem.text = math
 	end
