@@ -218,9 +218,29 @@ caption {
   margin-left: 0;
 }
 
-caption::before {
+table caption::before {
   content: 'Table ' counter(caption) '. ';
   font-weight: bold;
+}
+
+table caption {
+	caption-side:bottom
+}
+
+table.imageTable caption::before {
+	content: 'Figure ' attr(data-number) ': ';
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+table.imageTable caption {
+	text-align:center;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+figcaption::before {
+	content: 'Figure ' attr(data-number) ': ';
 }
 
 /* allow scroll on the x-axis */
