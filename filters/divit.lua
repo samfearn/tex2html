@@ -1,6 +1,6 @@
 -- Load my stringRep module so it's available for inspecting the AST
 -- These seem to need to be loaded relative to the working firectory pandoc is called from
-local sr = require "filters/stringRep"
+-- local sr = require "filters/stringRep"
 
 -- Create a lookup table for css class names based on environment names produced in the tex
 classNames = {}
