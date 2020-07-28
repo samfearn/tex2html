@@ -39,6 +39,8 @@ css:
 filters:
 - filters/divit.lua
 - filters/eqref.lua
+- filters/tableCaps.lua
+- filters/equationLabels.lua
 
 # part, chapter, section, or default:
 top-level-division: default
