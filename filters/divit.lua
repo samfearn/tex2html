@@ -12,6 +12,7 @@ classNames['Example:'] = 'example'
 classNames['Framed:'] = 'framed'
 classNames['Proposition:'] = 'proposition'
 classNames['Center:'] = 'center'
+classNames['Remark:'] = 'remark'
 
 function BlockQuote (elem)
 	local cont = elem.content
@@ -35,7 +36,7 @@ function BlockQuote (elem)
 			table.remove(cont[1].content,1)
 			
 		-- If the label appears on a new line in the tex, then cont has its first item as a Para which contains the string of the env name and as its second item a Para whose first contents item is a span containing the label info
-		elseif (cont[2].content[1].t == 'Span') then
+		elseif (cont[2].content[1].t == 'Span') and (cont[2].content[1].attr.attributes.label) then
 			--In this case, remove the environment name
 			table.remove(cont,1)
 			--Save the label name and then remove the corrsponding span. The resultant divs contents will be the remainder of cont 
