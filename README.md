@@ -15,7 +15,9 @@ One of the features added to pandoc with the filters in this repository is suppo
 	}
 	{\end{verse}}
 ~~~
-A full set of definitions is provided in [this gist][latexgist]; these can simply be copied to the end of the head of your latex file. Note that you will probably want to comment out these lines from your latex file if you want to run `pdflatex` on your file after adding these definitions. If you have already defined environments with the same name as any of these above environments, you can either comment out your previous definitions before using pandoc, or use `\renewenvironment` rather than `\newenvironment` as appropriate.
+A full set of definitions is provided in [this gist][latexgist]; these can simply be copied to the end of the head of your latex file.
+
+**Note:** You will probably want to comment out these lines from your latex file if you want to run `pdflatex` on your file after adding these definitions. If you have already defined environments with the same name as any of these above environments, you can either comment out your previous definitions before using pandoc, or use `\renewenvironment` rather than `\newenvironment` as appropriate.
 
 To convert `source.tex` into html (with a default filename of `pandoc_converted.html`) the contents of this repository should first be cloned into the working directory, alongside `source.tex` (Using `git clone https://github.com/samfearn/tex2html.git`). Pandoc is then run using the command
 
