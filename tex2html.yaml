@@ -33,9 +33,10 @@ html-math-method:
 include-in-header: [template/mathjax_config.html]
 include-after-body: []
 # resource-path: [".","./Images/"]
-  
+
+# If you want to load additional custom css, do so here. This is loaded after the external stylesheet.
 css:
-- template/style/latex.css
+# - template/style/latex.css
 
 filters:
 - filters/divit.lua
