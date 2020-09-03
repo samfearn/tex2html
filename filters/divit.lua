@@ -25,18 +25,26 @@ function BlockQuote (elem)
 	
 	if (classNames[envType]) then
 		className = classNames[envType]
-		-- We hope that the environment we're trying to div has a label. Depending on the formatting of the tex, this can happen in a few ways. If the label appears on the same line of the tex as the \begin{env} then the first entry of cont (which is a table) is a Para, whose first contents item is a string containing the name of our environment, whose second contents item is a softbreak and whose third contents item is a span containing the label info.
-		if (#cont[1].content > 1) and (cont[1].content[2].t == 'SoftBreak') and (cont[1].content[3].t == 'Span') then
-			--In this case, remove the environment name
-			table.remove(cont[1].content,1)
-			--Remove the softbreak
-			table.remove(cont[1].content,1)
-			--Save the label name and then remove the corrsponding span. The resultant divs contents will be the remainder of cont 
-			refLabel = cont[1].content[1].attr.attributes.label
-			table.remove(cont[1].content,1)
+		-- We hope that the environment we're trying to div has a label. Depending on the formatting of the tex, this can happen in a few ways. If the label appears on the same line of the tex as the \begin{env} then the first entry of cont (which is a table) is a Para, whose first contents item is a string containing the name of our environment, whose second contents item is a softbreak and whose third contents item is a span containing the label info. It's also possible that the theorem content itself starts on the same line as the theorem, in which case can we assume that the third contents item is not a span? Or maybe we need to check the span more carefully.
+		if ((#cont[1].content > 1) and (cont[1].content[2].t == 'SoftBreak')) then
+			-- Are there any other cases where the span isn't a label?
+			if (cont[1].content[3].t == 'Span') then
+				--In this case, remove the environment name
+				table.remove(cont[1].content,1)
+				--Remove the softbreak
+				table.remove(cont[1].content,1)
+				--Save the label name and then remove the corrsponding span. The resultant divs contents will be the remainder of cont 
+				refLabel = cont[1].content[1].attr.attributes.label
+				table.remove(cont[1].content,1)
+			else
+				-- In this case, the theorem itself starts on the same line as the theorem environment; remove the environment name
+				table.remove(cont[1].content,1)
+				--Remove the softbreak
+				table.remove(cont[1].content,1)
+			end
 			
 		-- If the label appears on a new line in the tex, then cont has its first item as a Para which contains the string of the env name and as its second item a Para whose first contents item is a span containing the label info
-		elseif (cont[2].content[1].t == 'Span') and (cont[2].content[1].attr.attributes.label) then
+		elseif (#cont>1) and  (cont[2].content[1].t == 'Span') and (cont[2].content[1].attr.attributes.label) then
 			--In this case, remove the environment name
 			table.remove(cont,1)
 			--Save the label name and then remove the corrsponding span. The resultant divs contents will be the remainder of cont 
