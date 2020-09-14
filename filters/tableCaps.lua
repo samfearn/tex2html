@@ -26,8 +26,12 @@ function Table(elem)
 		end
 	end
 	-- Now we've isolated all the images, we check they all have the same id. If so, we add the id and caption to the table
-	local id = imageCells[1].identifier
-	local cap = imageCells[1].caption
+	if(#imageCells>0) then
+		local id = imageCells[1].identifier
+		local cap = imageCells[1].caption
+	else
+		return elem
+	end
 	for i,v in pairs(imageCells) do
 		if (v.identifier ~= id) then
 			-- If we have a table where the images don't all share a caption and id, we abort
