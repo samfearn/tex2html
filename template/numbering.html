@@ -69,7 +69,7 @@ function doNumbering() {
 			if (fig.nodeName == "FIGURE") {
 				cap = fig.querySelector("figcaption");
 				var img = fig.querySelector("img, embed")
-				if (img) {}
+				if (img) {
 					var img_id = img.getAttribute("id");
 					fig.setAttribute("id",img_id);
 					img.removeAttribute("id");
