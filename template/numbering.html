@@ -9,7 +9,7 @@ function doNumbering() {
 	
 	function sanitiseSelector(selector) {
 		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
-		var sanitised = selector.replace("\:","\\\:");
+		var sanitised = selector.replace(/\:/g,"\\\:");
 		sanitised = sanitised.replace(/(^[\d])/,"\\3$$1 ");
 		return sanitised
 	}
@@ -68,10 +68,12 @@ function doNumbering() {
 			// For figures, we want to move the id to the figure, and set the data-number on both the figure and the figcaption
 			if (fig.nodeName == "FIGURE") {
 				cap = fig.querySelector("figcaption");
-				var img = fig.querySelector("img")
-				var img_id = img.getAttribute("id");
-				fig.setAttribute("id",img_id);
-				img.removeAttribute("id");
+				var img = fig.querySelector("img, embed")
+				if (img) {}
+					var img_id = img.getAttribute("id");
+					fig.setAttribute("id",img_id);
+					img.removeAttribute("id");
+				}
 			// for tables (which must be .imageTable due to the querySelector above), we want to set the data-number on the table and the caption
 			} else if (fig.nodeName == "TABLE") {
 				cap = fig.querySelector("caption");
