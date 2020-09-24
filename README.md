@@ -7,7 +7,7 @@ This is work in progress - please report any issues using the github issue track
 
 The idea is to create a simple process for creating html lecture notes from tex source. [Pandoc] is used to do the conversion, all that is being added is a filter for handling some named environments, javascript for customising the numbering of environments and references to these and some configuration defaults. The resulting html is styled using a slightly modified version of [latex-css].
 
-One of the features added to pandoc with the filters in this repository is support for additional latex environments, namely `theorem, proof, lemma, proposition, definition, example, remark, framed` and `center`. In order for these to work, specific definitions for these environments need to be added to the end of the head of your latex file. Each of these should be of the form:
+One of the features added to pandoc with the filters in this repository is support for additional latex environments, namely `theorem, proof, lemma, proposition, corollary, definition, example, remark, framed` and `center`. In order for these to work, specific definitions for these environments need to be added to the end of the head of your latex file. Each of these should be of the form:
 ~~~
 \newenvironment{theorem}
 	{\begin{verse}

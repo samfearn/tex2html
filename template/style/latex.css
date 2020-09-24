@@ -339,6 +339,19 @@ dl dd {
   font-style: normal;
 }
 
+/* Corollary */
+.corollary {
+  display: block;
+  margin: 12px 0;
+  font-style: italic;
+}
+.corollary::before {
+/*  content: 'Corollary ' counter(theorem) '. ';*/
+  content: 'Corollary ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* Remark */
 .remark {
   display: block;
