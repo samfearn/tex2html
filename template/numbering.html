@@ -11,6 +11,7 @@ function doNumbering() {
 		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
 		var sanitised = selector.replace(/\:/g,"\\\:");
 		sanitised = sanitised.replace(/(^[\d])/,"\\3$$1 ");
+		sanitised = sanitised.replace(/\//g,"\\\/");
 		return sanitised
 	}
 	
