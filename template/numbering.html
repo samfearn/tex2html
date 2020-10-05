@@ -6,6 +6,7 @@ function doNumbering() {
 	var supportedEnvsArray = supportedEnvsArrayString.split("|||");
 	supportedEnvsArray = supportedEnvsArray.map(inner => inner.split(";;;"));
 	var numberWithin = '${numberWithinLevel}';
+	var counterOffset = '${counterOffset}';
 	
 	function sanitiseSelector(selector) {
 		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
@@ -48,6 +49,7 @@ function doNumbering() {
 			for (var level of reqLevels) {
 				levelCount = level.getAttribute("data-number");
 				levelCount = levelCount+(".0".repeat(numberWithin-levelSpec));
+				levelCount = String(parseInt(levelCount)+parseInt(counterOffset));
 				for (var counter of supportedEnvsArray) {
 					var envCount = 1;
 					var envs = level.querySelectorAll(counter.join(", "));
