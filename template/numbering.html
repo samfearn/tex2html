@@ -8,6 +8,12 @@ function doNumbering() {
 	var numberWithin = '${numberWithinLevel}';
 	var counterOffset = '${counterOffset}';
 	
+	// counterOffset may be negative, and by default if specified on the command line this gets string concatenated with the default given in the yaml config and this then causes a problem. Can be fixed by removing the default in the config file and converting to an int, but this causes a NaN error if no value is suplied on the command line, so if NaN set to 0.
+	counterOffset = parseInt(counterOffset);
+	if (isNaN(counterOffset)) {
+		counterOffset = 0;
+	}
+	
 	function sanitiseSelector(selector) {
 		// tex labels often have colons in which need escaping. There may be other escaping needed here. Unfortunately neither encodeURI nor encodeURIComponent do what I need, so use regex to do the escaping manually.
 		var sanitised = selector.replace(/\:/g,"\\\:");
@@ -49,7 +55,7 @@ function doNumbering() {
 			for (var level of reqLevels) {
 				levelCount = level.getAttribute("data-number");
 				levelCount = levelCount+(".0".repeat(numberWithin-levelSpec));
-				levelCount = String(parseInt(levelCount)+parseInt(counterOffset));
+				levelCount = String(parseInt(levelCount)+(counterOffset));
 				for (var counter of supportedEnvsArray) {
 					var envCount = 1;
 					var envs = level.querySelectorAll(counter.join(", "));
