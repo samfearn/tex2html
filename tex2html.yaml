@@ -15,6 +15,7 @@ variables:
   # up to offsets, 1 corresponds to section, 2 to subsection and so on
   numberWithinLevel: 1
   # counterOffset: 0
+  # subcounterOffset: 1
   environmentCounters:
      counter1:
       - definition

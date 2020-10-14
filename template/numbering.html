@@ -7,11 +7,17 @@ function doNumbering() {
 	supportedEnvsArray = supportedEnvsArray.map(inner => inner.split(";;;"));
 	var numberWithin = '${numberWithinLevel}';
 	var counterOffset = '${counterOffset}';
+	var subcounterOffset = '${subcounterOffset}';
 	
 	// counterOffset may be negative, and by default if specified on the command line this gets string concatenated with the default given in the yaml config and this then causes a problem. Can be fixed by removing the default in the config file and converting to an int, but this causes a NaN error if no value is suplied on the command line, so if NaN set to 0.
 	counterOffset = parseInt(counterOffset);
 	if (isNaN(counterOffset)) {
 		counterOffset = 0;
+	}
+	
+	subcounterOffset = parseInt(subcounterOffset);
+	if (isNaN(subcounterOffset)) {
+		subcounterOffset = 0;
 	}
 	
 	function sanitiseSelector(selector) {
@@ -54,8 +60,8 @@ function doNumbering() {
 			var reqLevels = document.querySelectorAll(".level"+levelSpec);
 			for (var level of reqLevels) {
 				levelCount = level.getAttribute("data-number");
-				levelCount = levelCount+(".0".repeat(numberWithin-levelSpec));
 				levelCount = String(parseInt(levelCount)+(counterOffset));
+				levelCount = levelCount+(("."+subcounterOffset).repeat(numberWithin-levelSpec));
 				for (var counter of supportedEnvsArray) {
 					var envCount = 1;
 					var envs = level.querySelectorAll(counter.join(", "));
