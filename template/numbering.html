@@ -60,7 +60,7 @@ function doNumbering() {
 			var reqLevels = document.querySelectorAll(".level"+levelSpec);
 			for (var level of reqLevels) {
 				levelCount = level.getAttribute("data-number");
-				levelCount = String(parseInt(levelCount)+(counterOffset));
+				levelCount = String(parseFloat(levelCount)+(counterOffset));
 				levelCount = levelCount+(("."+subcounterOffset).repeat(numberWithin-levelSpec));
 				for (var counter of supportedEnvsArray) {
 					var envCount = 1;
