@@ -113,6 +113,12 @@ function doNumbering() {
 			prob.setAttribute("data-number",prob_no);
 			prob_no +=1
 		}
+		sols = document.querySelectorAll(".solution");
+		var sol_no = problemCounter;
+		for (var sol of sols) {
+			sol.setAttribute("data-number",sol_no);
+			sol_no +=1
+		}
 	}
 	
 	// labelLinks() should occur last, so that the data-numbers have been correctly set first.
