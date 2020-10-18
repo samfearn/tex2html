@@ -365,6 +365,34 @@ dl dd {
   font-style: normal;
 }
 
+/* Solution */
+.solution {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.solution::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Solution ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Problem */
+.problem {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.problem::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Problem ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* Center align author name, use small caps and add vertical spacing  */
 .author {
   margin: 0.85rem 0;
