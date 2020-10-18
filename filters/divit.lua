@@ -19,7 +19,15 @@ classNames['Solution:'] = 'solution'
 classNames['BonusProblem:'] = 'bonusproblem'
 classNames['BonusSolution:'] = 'bonussolution'
 
-function BlockQuote (elem)
+local vars = {}
+
+function getMeta(meta)
+	for k,v in pairs(meta) do
+		vars[k]=v
+	end
+end
+
+function divit(elem)
 	local cont = elem.content
 	local className
 	local envType = cont[1].content[1].text
@@ -30,9 +38,11 @@ function BlockQuote (elem)
 	
 	if (classNames[envType]) then
 		className = classNames[envType]
-		-- Remove solutions
-		if(string.find(className,"solution")) then
-			return pandoc.Null
+		-- Remove solutions, unless showSols is set as metadata (on the command line for instance)
+		if (not vars.showSols) then
+			if(string.find(className,"solution")) then
+				return pandoc.Null
+			end
 		end
 		-- We hope that the environment we're trying to div has a label. Depending on the formatting of the tex, this can happen in a few ways. If the label appears on the same line of the tex as the \begin{env} then the first entry of cont (which is a table) is a Para, whose first contents item is a string containing the name of our environment, whose second contents item is a softbreak and whose third contents item is a span containing the label info. It's also possible that the theorem content itself starts on the same line as the theorem, in which case can we assume that the third contents item is not a span? Or maybe we need to check the span more carefully.
 		if ((#cont[1].content > 1) and (cont[1].content[2].t == 'SoftBreak')) then
@@ -68,3 +78,5 @@ function BlockQuote (elem)
 	end
 	return pandoc.Div(cont,{class=className,id=refLabel})
 end
+
+return{{Meta = getMeta},{BlockQuote = divit}}
