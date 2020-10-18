@@ -109,7 +109,6 @@ function doNumbering() {
 		// This function numbers any environments that just use a global counter, such as a problem number on a problems sheet, where there are no sections to number with respect to.
 		probs = document.querySelectorAll(".problem");
 		var prob_no = problemCounter;
-		if 
 		for (var prob of probs) {
 			prob.setAttribute("data-number",prob_no);
 			prob_no +=1

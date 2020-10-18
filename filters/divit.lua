@@ -16,8 +16,8 @@ classNames['Remark:'] = 'remark'
 classNames['Corollary:'] = 'corollary'
 classNames['Problem:'] = 'problem'
 classNames['Solution:'] = 'solution'
-classNames['Bonus Problem:'] = 'bonusproblem'
-classNames['Bonus Solution:'] = 'bonussolution'
+classNames['BonusProblem:'] = 'bonusproblem'
+classNames['BonusSolution:'] = 'bonussolution'
 
 function BlockQuote (elem)
 	local cont = elem.content
@@ -30,6 +30,10 @@ function BlockQuote (elem)
 	
 	if (classNames[envType]) then
 		className = classNames[envType]
+		-- Remove solutions
+		if(string.find(className,"solution")) then
+			return pandoc.Null
+		end
 		-- We hope that the environment we're trying to div has a label. Depending on the formatting of the tex, this can happen in a few ways. If the label appears on the same line of the tex as the \begin{env} then the first entry of cont (which is a table) is a Para, whose first contents item is a string containing the name of our environment, whose second contents item is a softbreak and whose third contents item is a span containing the label info. It's also possible that the theorem content itself starts on the same line as the theorem, in which case can we assume that the third contents item is not a span? Or maybe we need to check the span more carefully.
 		if ((#cont[1].content > 1) and (cont[1].content[2].t == 'SoftBreak')) then
 			-- Are there any other cases where the span isn't a label?
