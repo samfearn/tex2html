@@ -393,6 +393,34 @@ dl dd {
   font-style: normal;
 }
 
+/* Solution */
+.bonussolution {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.bonussolution::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Bonus Solution. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Problem */
+.bonusproblem {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.bonusproblem::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Bonus Problem. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* Center align author name, use small caps and add vertical spacing  */
 .author {
   margin: 0.85rem 0;
