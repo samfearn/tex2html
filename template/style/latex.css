@@ -326,6 +326,20 @@ dl dd {
   font-style: normal;
 }
 
+/* Exercise */
+.exercise {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.exercise::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Exercise ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* Proposition */
 .proposition {
   display: block;

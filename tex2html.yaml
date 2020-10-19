@@ -25,6 +25,7 @@ variables:
       - proposition
       - remark
       - corollary
+	  - exercise
 	 # If you want to use a separate counter for examples, uncomment the two lines below and comment out example from the list above. Move other envinronments to counter2 similarly. You may also move environments to an environment3 (or 4) if required. Simply follow the structure as given here.
      # counter2:
       # - example

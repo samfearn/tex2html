@@ -14,10 +14,12 @@ classNames['Proposition:'] = 'proposition'
 classNames['Center:'] = 'center'
 classNames['Remark:'] = 'remark'
 classNames['Corollary:'] = 'corollary'
+classNames['Exercise:'] = 'exercise'
 classNames['Problem:'] = 'problem'
 classNames['Solution:'] = 'solution'
 classNames['BonusProblem:'] = 'bonusproblem'
 classNames['BonusSolution:'] = 'bonussolution'
+
 
 local vars = {}
 
