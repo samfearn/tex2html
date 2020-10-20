@@ -407,6 +407,20 @@ dl dd {
   font-style: normal;
 }
 
+/* Problem */
+.question {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.question::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Question ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
 /* Solution */
 .bonussolution {
 /*  counter-increment: example;*/
