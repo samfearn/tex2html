@@ -9,6 +9,7 @@ function doNumbering() {
 	var counterOffset = '${counterOffset}';
 	var subcounterOffset = '${subcounterOffset}';
 	var problemCounter = '${problemCounter}';
+	const partLabels = 'abcdefghijklmnopqrstuvwxyz'.split('');
 	
 	// counterOffset may be negative, and by default if specified on the command line this gets string concatenated with the default given in the yaml config and this then causes a problem. Can be fixed by removing the default in the config file and converting to an int, but this causes a NaN error if no value is suplied on the command line, so if NaN set to 0.
 	counterOffset = parseInt(counterOffset);
@@ -107,18 +108,33 @@ function doNumbering() {
 	
 	function numberGlobals() {
 		// This function numbers any environments that just use a global counter, such as a problem number on a problems sheet, where there are no sections to number with respect to.
-		probs = document.querySelectorAll(".problem");
+		probsols = document.querySelectorAll(".problem, .solution");
 		var prob_no = problemCounter;
-		for (var prob of probs) {
-			prob.setAttribute("data-number",prob_no);
-			prob_no +=1
+		var partNo = 0;
+		for (var probsol of probsols) {
+			if (probsol.className == "problem"){
+				prob_no +=1;
+				partNo = 0;
+				probsol.setAttribute("data-number",prob_no);
+			}
+			else {
+				if (probsol.parentNode.nodeName == "LI") {
+					var partLabel = partLabels[partNo];
+					probsol.setAttribute("data-number",prob_no.toString()+partLabel);
+					partNo +=1;
+				}
+				else{
+					probsol.setAttribute("data-number",prob_no);
+				}
+			}
+			
 		}
-		sols = document.querySelectorAll(".solution");
-		var sol_no = problemCounter;
-		for (var sol of sols) {
-			sol.setAttribute("data-number",sol_no);
-			sol_no +=1
-		}
+		// sols = document.querySelectorAll(".solution");
+// 		var sol_no = problemCounter;
+// 		for (var sol of sols) {
+// 			sol.setAttribute("data-number",sol_no);
+// 			sol_no +=1
+// 		}
 	}
 	
 	// labelLinks() should occur last, so that the data-numbers have been correctly set first.
