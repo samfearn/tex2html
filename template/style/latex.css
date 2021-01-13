@@ -326,6 +326,27 @@ dl dd {
   font-style: normal;
 }
 
+/* Example with QED */
+.exampleqed {
+/*  counter-increment: example;*/
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.exampleqed::before {
+/*  content: 'Example ' counter(example) '. ';*/
+  content: 'Example ' attr(data-number) '. ' ;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.exampleqed::after{
+    content: '◾️';
+    position: absolute;
+    right: -12px;
+    bottom: -2px;
+}
+
 /* Exercise */
 .exercise {
 /*  counter-increment: example;*/
