@@ -22,7 +22,7 @@ variables:
       - theorem
       - lemma
       - example
-	  - exampleqed
+      - exampleqed
       - proposition
       - remark
       - corollary
