@@ -332,6 +332,7 @@ dl dd {
   display: block;
   margin: 12px 0;
   font-style: normal;
+  position: relative;
 }
 .exampleqed::before {
 /*  content: 'Example ' counter(example) '. ';*/
@@ -341,7 +342,7 @@ dl dd {
 }
 
 .exampleqed::after{
-    content: '◾️';
+    content: '▲';
     position: absolute;
     right: -12px;
     bottom: -2px;
