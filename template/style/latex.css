@@ -596,11 +596,12 @@ h6 {
 @media only screen and (max-width: 650px) {
 	/* Sideways scrolling for maths */
 	.math.display > span {
-		overflow-x: scroll;
+		overflow-x: visible;
 	}
 
 	.math.inline > span {
 		overflow-x: scroll;
+		overflo-y: hidden;
 		max-width: 100%;
 	}
 }
