@@ -27,8 +27,8 @@ function Table(elem)
 	end
 	-- Now we've isolated all the images, we check they all have the same id. If so, we add the id and caption to the table
 	if(#imageCells>0) then
-		local id = imageCells[1].identifier
-		local cap = imageCells[1].caption
+		id = imageCells[1].identifier
+		cap = imageCells[1].caption
 	else
 		return elem
 	end
