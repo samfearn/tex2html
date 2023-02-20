@@ -1,6 +1,8 @@
 # tex2html
 This repository contains files to be used with pandoc for converting from tex to html.
 
+I wrote a blog post motivating the need for this [here][blog], and included a compiled example document, which may be of interest alongside this brief README.
+
 This is work in progress - please report any issues using the github issue tracker.
 
 ## Usage
@@ -40,3 +42,4 @@ The template loads a stylesheet based on [latex-css] which is available from [he
 [latex.min.css]:http://samfearn.github.io/latex.min.css
 [latex-css]:https://latex.now.sh
 [Pandoc]:https://pandoc.org/MANUAL.html
+[blog]:https://www.maths.dur.ac.uk/users/s.m.fearn/blog/2021/pandoc/
